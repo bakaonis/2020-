@@ -1,0 +1,13 @@
+# 软件设计实践     2017055551118_邹志康
+
+## Player1 Operation
+LEFT    -A      左移
+RIGHT   -D      右移
+JUMP    -K      跳起
+HIT     -SPACE  击球
+
+## Player2 Operation
+LEFT    -LEFT     左移
+RIGHT   -RIGHT    右移
+JUMP    -UP       跳起
+HIT     -NUMPAD0  击球
