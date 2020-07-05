@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 public class man1 extends BaseGravityElement {
-	private int x,y,width,height,dir;
+	private int x,y,width,height,dir,score=0;
 	private Image image;
 	public man1() {
 		super(0,0);
@@ -25,6 +25,12 @@ public class man1 extends BaseGravityElement {
     }
     public int getHeight() {
 		return this.height;
+    }
+    public int getsc() {
+    	return this.score;
+    }
+    public void setsc(int sc) {
+    	this.score=sc;
     }
     public void setX(int x) {
     	this.x=x;

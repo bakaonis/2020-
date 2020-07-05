@@ -2,7 +2,7 @@
 import java.awt.*;
 import javax.swing.*;
 public class ball extends BaseGravityElement {
-	private int x,y,width,height,dir;
+	private int x,y,width,height,dir,sc1,sc2,sc;
 	private Image image;
 	public ball() {
 		super(0,0);
@@ -27,6 +27,27 @@ public class ball extends BaseGravityElement {
     public int getHeight() {
 		return this.height;
     }
+    public void sci() {
+    	this.sc1=0;
+    	this.sc2=0;
+    }
+    public int getsc1() {
+		if(this.onTheGroud()) {
+				if(this.x>500) {
+					sc1++;
+			}
+		} 
+		return this.sc1;
+    }
+    public int getsc2() {
+		if(this.onTheGroud()) {
+				if(this.x<500) {
+					sc2++;
+			}
+		} 
+		return this.sc2;
+    }
+    
     public void setX(int x) {
     	this.x=x;
     }

@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 import java.util.*;
 import java.util.Timer;
+import javax.swing.JOptionPane;
 public class GameFrame extends JFrame{
 	public GameFrame() throws InterruptedException {
 		this.setTitle("»ð²ñÈË´òÓðÃ«Çò");
@@ -17,6 +18,8 @@ public class GameFrame extends JFrame{
 		man1.setX(0);
 		man1.setY(360);
 		man2 man2= new man2();
+		score1 sc1=new score1();
+		score2 sc2=new score2();
 		man2.setX(915);
 		man2.setY(360);
 		ball ball=new ball();
@@ -26,7 +29,7 @@ public class GameFrame extends JFrame{
 //		ball bullet2= new ball();
 //		bullet1.setX(700);
 //		bullet2.setY(100);
-		GamePlane plane =new GamePlane(man1,man2,ball);
+		GamePlane plane =new GamePlane(man1,man2,ball,sc1,sc2);
 		this.add(plane);
 		this.setVisible(true);
 		this.addKeyListener(new KeyAdapter() {
@@ -55,7 +58,16 @@ public class GameFrame extends JFrame{
             	ElementBean.getGravity().add(man1);
             	ElementBean.getGravity().add(man2);
             	ElementBean.getGravity().add(ball);
-            	CommonUtils.task(18, () -> {      
+            	ball.sci();
+            	CommonUtils.task(18, () -> {
+            		if(sc1.getp()>7||sc2.getp()>7) {
+            			if(sc1.getp()>7) {
+        				JOptionPane.showMessageDialog(null, "Play1 win");
+            			}else if(sc2.getp()>7) {
+            				JOptionPane.showMessageDialog(null, "Play2 win");
+            			}
+        				Constant.TIMER_STOP_ON_OFF=true;
+        			}
             	ball.judgehit1(man1.hit(ball),man1);
             	ball.judgehit2(man2.hit(ball),man2);
             	ball.judgenet(net);
@@ -66,6 +78,9 @@ public class GameFrame extends JFrame{
             	man2.groundJudge();
             	ball.groundJudge();
     			ElementBean.getGravity().universalGravitation();
+    			sc1.gets(ball.getsc1());
+    			sc2.gets(ball.getsc2());
+    			
     			plane.repaint();
             	});   			          
 	}
